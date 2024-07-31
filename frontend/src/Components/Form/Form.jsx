@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import './Form.css'
 
 const Form = () => {
 
@@ -41,7 +42,7 @@ const Form = () => {
       };
 
   return (
-    <div>
+    <div className='formBox'>
       <form onSubmit={handleSubmit}>
         <input 
         type='text'
