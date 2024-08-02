@@ -12,7 +12,7 @@ const MessageModal = ({ isOpen, onRequestClose, message, isSuccess }) => (
     overlayClassName="overlay"
   >
     <div className={`modal-content ${isSuccess ? 'success' : 'error'}`}>
-      <p>{message}</p>
+        <p dangerouslySetInnerHTML={{ __html: message }}></p>
       <button onClick={onRequestClose}>Close</button>
     </div>
   </Modal>

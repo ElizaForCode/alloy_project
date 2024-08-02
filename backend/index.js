@@ -59,16 +59,16 @@ try {
     console.log('Response data:', submission.data);
 
     if (submission.data.summary && submission.data.summary.outcome === 'Approved') {
-        res.status(200).json({message: 'Success! 🎉🎉🎉 Your application has been approved!'});
+        res.status(200).json({message: '🎉 Success! 🎉<br><br>Your application has been approved.<br>We are otterly delighted to have you!'});
     }
     else if (submission.data.summary && submission.data.summary.outcome === 'Manual Review') {
-        res.status(200).json({message: 'Thank you for submitting your application. We will get in touch shortly!'});
+        res.status(200).json({message: 'Thank you for submitting your application!<br>Please float patiently while our otters do their due diligence.'});
     }
     else if (submission.data.summary && submission.data.summary.outcome === 'Denied') {
-        res.status(200).json({message: 'Sorry, your application was not successful at this time.'});
+        res.status(200).json({message: 'Sadly your application was not successful at this time.<br>You otter try again in the future!'});
     }
     else {
-        res.status(400).json({message: 'There seems to be an error. Please contact our customer support team.'})
+        res.status(400).json({message: 'There seems to be an error.'})
     }
 }
 catch(error) {

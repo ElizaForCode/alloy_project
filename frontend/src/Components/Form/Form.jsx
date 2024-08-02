@@ -63,7 +63,8 @@ const Form = () => {
 
     <div className='formBox'>
       <form onSubmit={handleSubmit}>
-        <h4>Personal details:</h4>
+        <h2>Apply Now!</h2>
+        <h4>Personal details</h4>
         <input 
         type='text'
         name='firstName'
