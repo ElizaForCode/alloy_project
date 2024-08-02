@@ -1,4 +1,143 @@
-.formBox {
+body {
+    background-color: #520078d3; /* deep purple background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.intro {
+    max-width: 1500px;
     text-align: center;
+    margin: 50px;
+}
+
+.intro h1 {
+    margin: 0 0 10px 0;
+    font-size: 50px;
+    text-align: center;
+}
+
+.intro p {
+    margin: 0;
+    font-size: 30px;
+    color: #040404;
+    text-align: center; 
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.formBox {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.formBox form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formBox h3 {
+    margin-bottom: 10px;
+}
+
+.formBox input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.formBox button {
+    padding: 10px;
+    background-color: #b14dff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formBox button:hover {
+    background-color: #520078d3;
+}
+
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Modal styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-content {
+    text-align: center;
+  }
+  
+  .modal-content.success {
+    color: green;
+  }
+  
+  .modal-content.error {
+    color: red;
+  }
+  
+  .modal-content button {
+    padding: 10px 20px;
+    background-color: #b14dff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background-color: #520078d3;
   }
   

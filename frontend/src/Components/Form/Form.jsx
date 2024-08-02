@@ -1,7 +1,10 @@
-import React, {useState} from 'react'
-import axios from 'axios'
-import './Form.css'
+import React, { useState } from 'react';
+import axios from 'axios';
+import './Form.css';
+import MessageModal from './MessageModal';
 
+
+// Calling the form fields to create the form data
 const Form = () => {
 
     const [formData, setFormData] = useState ({
@@ -16,15 +19,18 @@ const Form = () => {
         ssn: '',
         dob: '',
     })
-
+//Handling the API response message
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
+//Handling the setting of field values
     const handleChange = (e) => {
         const {name,value} = e.target;
         setFormData ({ ...formData, [name]: value });
     }
-
+//Handling the submission to the backend and returning the message to the frontend
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -36,14 +42,28 @@ const Form = () => {
             }  
           );
           setMessage(submission.data.message);
+          setIsSuccess(true);
           setError('');
         } catch (error) {
-          console.log ('Error:', error)}
-      };
+          setError('An error occurred while submitting the form. Please try again.');
+          setIsSuccess(false);
+          setMessage('');
+      }
+      setIsModalOpen(true);
+  };
 
+  const closeModal = () => {
+      setIsModalOpen(false);
+  };
+      
+
+// Form HTML and outcome message
   return (
+  <div className='container'>  
+
     <div className='formBox'>
       <form onSubmit={handleSubmit}>
+        <h4>Personal details:</h4>
         <input 
         type='text'
         name='firstName'
@@ -60,8 +80,33 @@ const Form = () => {
         onChange={handleChange}
         required />
         
-        <div>
-        <h3>Address</h3>
+        <input 
+        type='Date'
+        name='dob'
+        placeholder='Date of Birth (YYYY-MM-DD)'
+        value={formData.dob}
+        onChange={handleChange}
+        required 
+        pattern='\d{4}-\d{2}-\d{2}'/>
+
+        <input 
+        type='number'
+        maxLength='9'
+        name='ssn'
+        placeholder='SSN (9 digits)'
+        value={formData.ssn}
+        onChange={handleChange}
+        required />
+         
+        <input 
+        type='email'
+        name='email'
+        placeholder='Email Address'
+        value={formData.email}
+        onChange={handleChange}
+        required />
+         
+        <h4>Address </h4>
         <input 
         type='text'
         name='addressLine1'
@@ -110,39 +155,19 @@ const Form = () => {
         value={formData.country}
         onChange={handleChange}
         readOnly />
-        </div>
 
-        <input 
-        type='number'
-        maxLength='9'
-        name='ssn'
-        placeholder='SSN (9 digits)'
-        value={formData.ssn}
-        onChange={handleChange}
-        required />
-         
-         <input 
-        type='email'
-        name='email'
-        placeholder='Email Address'
-        value={formData.email}
-        onChange={handleChange}
-        required />
-         
-         <input 
-        type='Date'
-        name='dob'
-        placeholder='Date of Birth (YYYY-MM-DD)'
-        value={formData.dob}
-        onChange={handleChange}
-        required 
-        pattern='\d{4}-\d{2}-\d{2}'/>
         
         <button type='submit'>Apply!</button>
       </form>
-      {message && <div style={{ color: 'green' }}>{message}</div>}
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      <MessageModal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    message={isSuccess ? message : error}
+                    isSuccess={isSuccess}
+      />
+
     </div>
+  </div>
   )
 }
 
