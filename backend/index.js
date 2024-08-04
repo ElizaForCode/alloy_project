@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const axios = require('axios');
 
+//set up authentication tokens
 dotenv.config()
 const endpoint = 'https://sandbox.alloy.co/v1/evaluations'
 const workflowToken = process.env.WORKFLOW_TOKEN
@@ -32,9 +33,7 @@ try {
         dob,
     } = req.body;
 
-   // if (!firstName || !lastName || !addressLine1 || !city || !state || !zip || !country || !ssn || !dob) {
-     //   return res.status(400).json({ message: 'Missing required fields' });
-   // }
+
     const payload = {
         name_first: firstName,
         name_last: lastName,
@@ -48,7 +47,6 @@ try {
         birth_date: dob,
     }
 
- //   console.log('Payload:', JSON.stringify(payload, null, 2));
 
     const submission = await axios.post(endpoint, payload, {
         headers: {
