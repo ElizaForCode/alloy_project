@@ -97,7 +97,8 @@ const Form = () => {
         placeholder='SSN (9 digits)'
         value={formData.ssn}
         onChange={handleChange}
-        required />
+        required 
+        pattern="[0-9]{9}" />
          
         <input 
         type='email'
