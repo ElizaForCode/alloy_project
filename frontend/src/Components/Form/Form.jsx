@@ -122,7 +122,7 @@ const Form = () => {
         placeholder='Address Line 2'
         value={formData.addressLine2}
         onChange={handleChange}
-        required />
+        />
         
         <input 
         type='text'
